@@ -4,27 +4,27 @@ import bcrypt from "bcrypt";
 import User from "../models/user.js";
 import Candidate from "../models/candidate.js";
 
-//*** RESOLVERS ***//
+//* ** RESOLVERS ***//
 const resolvers = {
-  //QUERIES
+  // QUERIES
   Query: {
+    // LOGGED IN USER- Return Logged In User
+    loggedInUser: async (root, args, context) => {
+      return context.currentUser;
+    },
+
     // CANDIDATES COUNT
     allCandidatesCount: () => Candidate.collection.countDocuments(),
 
     // ALL CANDIDATES (ALL/NAME)
-    allCandidates: (root, { candidateName }) => {
-      if (!candidateName) {
+    allCandidates: (root, { candidateLastName }) => {
+      if (!candidateLastName) {
         return Candidate.find({});
       }
 
-      if (candidateName) {
-        return Candidate.find({ name: candidateName });
+      if (candidateLastName) {
+        return Candidate.find({ lastName: candidateLastName });
       }
-    },
-
-    // LOGGED IN USER- Return Logged In User
-    loggedInUser: async (root, args, context) => {
-      return context.currentUser;
     },
   },
 
@@ -55,7 +55,7 @@ const resolvers = {
           "Password and Password Confirmation don't match",
           {
             invalidArgs: args.name,
-          }
+          },
         );
       }
 
@@ -88,7 +88,7 @@ const resolvers = {
       // Return a Promise --> use of Await
       const isPasswordCorrect = await bcrypt.compare(
         args.password,
-        user.passwordHash
+        user.passwordHash,
       );
 
       if (!isPasswordCorrect) {
@@ -112,21 +112,26 @@ const resolvers = {
     // ADD CANDIDATE
     addCandidate: async (
       root,
-      { candidateName, dateOfBirth, country, politicalOrientation },
-      context
+      { candidateLastName, candidateFirstName, country, politicalOrientation },
+      context,
     ) => {
       // User Authorization
-      let currentUser = context.currentUser;
+      const { currentUser } = context;
 
       if (!currentUser) {
         throw new AuthenticationError("User not authenticated");
       }
 
+      // If User already have 1 candidate, Return Error
+      if (currentUser.candidate.length > 0) {
+        throw new Error("User can not add more than 1 Candidate");
+      }
+
       //* CANDIDATE *//
       // New Candidate
       const newCandidate = new Candidate({
-        name: candidateName,
-        dateOfBirth,
+        lastName: candidateLastName,
+        firstName: candidateFirstName,
         country,
         politicalOrientation,
         votes: 0,
@@ -162,11 +167,11 @@ const resolvers = {
     // UPDATE CANDIDATE
     updateCandidate: async (
       root,
-      { dateOfBirth, country, politicalOrientation, id },
-      context
+      { country, politicalOrientation, id },
+      context,
     ) => {
       // User Authorization
-      const currentUser = context.currentUser;
+      const { currentUser } = context;
 
       if (!currentUser) {
         throw new AuthenticationError("User not authenticated");
@@ -174,16 +179,13 @@ const resolvers = {
 
       // If No Candidate is found
       const updatedCandidate = await Candidate.findById(id);
-      console.log(updatedCandidate);
       if (!updatedCandidate) {
         return null;
       }
 
       try {
         // Update Candidate
-        console.log("AHAHAHA");
         const candidateObject = {
-          dateOfBirth,
           country,
           politicalOrientation,
         };
@@ -195,10 +197,12 @@ const resolvers = {
         // Model Validation (unique, length, etc.)
         throw new Error("Candidate not found");
       }
-    }, // DELETE CANDIDATE
+    },
+
+    // DELETE CANDIDATE
     deleteCandidate: async (root, { id }, context) => {
       // User Authorization
-      const currentUser = context.currentUser;
+      const { currentUser } = context;
 
       if (!currentUser) {
         throw new AuthenticationError("User not authenticated");

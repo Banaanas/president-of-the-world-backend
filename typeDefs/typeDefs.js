@@ -1,10 +1,10 @@
 import { gql } from "apollo-server";
 
-//*** TYPEDEFS ***//
+//* ** TYPEDEFS ***//
 const typeDefs = gql`
   type Candidate {
-    name: String!
-    dateOfBirth: String!
+    lastName: String!
+    firstName: String!
     country: String!
     politicalOrientation: String!
     votes: Int!
@@ -23,7 +23,7 @@ const typeDefs = gql`
 
   type Query {
     allCandidatesCount: Int!
-    allCandidates(candidateName: String): [Candidate!]!
+    allCandidates(candidateLastName: String): [Candidate!]!
     loggedInUser: User
   }
 
@@ -37,8 +37,8 @@ const typeDefs = gql`
     login(username: String!, password: String!): Token
 
     addCandidate(
-      candidateName: String!
-      dateOfBirth: String!
+      candidateLastName: String!
+      candidateFirstName: String!
       country: String!
       politicalOrientation: String!
     ): Candidate
@@ -46,7 +46,6 @@ const typeDefs = gql`
     voteCandidate(name: String!, id: ID!): Candidate
 
     updateCandidate(
-      dateOfBirth: String
       country: String
       politicalOrientation: String
       id: ID!

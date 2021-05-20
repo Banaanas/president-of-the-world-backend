@@ -43,15 +43,15 @@ const server = new ApolloServer({
     if (authorization && authorization.toLowerCase().startsWith("bearer")) {
       const decodedToken = jwt.verify(
         authorization.substring(7),
-        process.env.ACCESS_TOKEN_SECRET
+        process.env.ACCESS_TOKEN_SECRET,
       );
 
-      // populate() method defines that the ids referencing User objects (= Friends) in the Candidate field of
-      // the User documents will be replaced by the referenced Contact documents.
+      // populate() method defines that the ids referencing User objects (= Friends)
+      // in the Candidate field of the User documents will be replaced by the referenced
+      // Contact documents.
       const currentUser = await User.findById(decodedToken.id).populate(
-        "candidate"
+        "candidate",
       );
-      console.log(currentUser);
       return { currentUser };
     }
   },

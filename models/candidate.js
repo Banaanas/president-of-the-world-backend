@@ -2,16 +2,17 @@ import mongoose from "mongoose";
 import uniqueValidator from "mongoose-unique-validator"; // To require some Schema's field to be unique
 
 const candidateSchema = new mongoose.Schema({
-  name: {
+  lastName: {
     type: String,
     required: true,
     minlength: 4,
     unique: true, // uniqueValidator Library
     uniqueCaseInsensitive: true, // uniqueValidator works for ABC = abc = AbC = aBc
   },
-  dateOfBirth: {
-    type: Number,
+  firstName: {
+    type: String,
     required: true,
+    minlength: 4,
   },
   country: {
     type: String,
