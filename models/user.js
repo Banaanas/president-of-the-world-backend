@@ -4,7 +4,8 @@ import uniqueValidator from "mongoose-unique-validator"; // To require some Sche
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    minlength: 3,
+    minlength: 5,
+    maxlength: 15,
     required: true,
     unique: true, // uniqueValidator Library
     uniqueCaseInsensitive: true, // uniqueValidator works for ABC = abc = AbC = aBc
@@ -15,12 +16,10 @@ const userSchema = new mongoose.Schema({
     // Because password.length !== passwordHash.length, password.length should be validated
     // in the Controller (and not the Model - here)
   },
-  candidate: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Candidate",
-    },
-  ],
+  candidate: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Candidate",
+  },
 });
 
 userSchema.plugin(uniqueValidator); // uniqueValidator Library

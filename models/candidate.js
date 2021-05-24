@@ -5,17 +5,21 @@ const candidateSchema = new mongoose.Schema({
   lastName: {
     type: String,
     required: true,
-    minlength: 4,
+    minlength: 3,
+    maxlength: 15,
     unique: true, // uniqueValidator Library
     uniqueCaseInsensitive: true, // uniqueValidator works for ABC = abc = AbC = aBc
   },
   firstName: {
     type: String,
+    minlength: 3,
+    maxlength: 15,
     required: true,
-    minlength: 4,
   },
   country: {
     type: String,
+    minlength: 4,
+    maxlength: 15,
     required: true,
   },
   politicalOrientation: {

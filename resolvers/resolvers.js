@@ -123,7 +123,7 @@ const resolvers = {
       }
 
       // If User already have 1 candidate, Return Error
-      if (currentUser.candidate.length > 0) {
+      if (currentUser?.candidate) {
         throw new Error("User can not add more than 1 Candidate");
       }
 
@@ -192,10 +192,12 @@ const resolvers = {
 
         return await Candidate.findByIdAndUpdate(id, candidateObject, {
           new: true,
+          // findByIdAndUpdate needs runValidators: true to apply Mongoose candidateSchema
+          runValidators: true,
         });
       } catch (error) {
         // Model Validation (unique, length, etc.)
-        throw new Error("Candidate not found");
+        throw new Error(error.message);
       }
     },
 

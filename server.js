@@ -29,7 +29,7 @@ const connectToDB = async () => {
 connectToDB();
 
 // Debug Mode
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
 // Apollo Server
 const server = new ApolloServer({
