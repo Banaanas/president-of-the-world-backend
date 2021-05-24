@@ -106,6 +106,8 @@ const resolvers = {
         value: jwt.sign(userForToken, process.env.ACCESS_TOKEN_SECRET),
       };
 
+      const loggedInUser = await User.findById(user.id).populate("candidate");
+
       return generatedToken;
     },
 
