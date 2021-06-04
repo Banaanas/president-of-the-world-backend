@@ -102,13 +102,13 @@ const resolvers = {
       };
 
       // Generate Token
-      const generatedToken = {
-        value: jwt.sign(userForToken, process.env.ACCESS_TOKEN_SECRET),
-      };
-
+      const generatedToken = jwt.sign(
+        userForToken,
+        process.env.ACCESS_TOKEN_SECRET,
+      );
       const loggedInUser = await User.findById(user.id).populate("candidate");
 
-      return generatedToken;
+      return { token: generatedToken, user: loggedInUser };
     },
 
     // ADD CANDIDATE

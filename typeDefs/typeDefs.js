@@ -43,13 +43,13 @@ const typeDefs = gql`
       politicalOrientation: String!
     ): Candidate
 
-    voteCandidate(name: String!, id: ID!): Candidate
-
     updateCandidate(
       country: String
       politicalOrientation: String
       id: ID!
     ): Candidate
+
+    voteCandidate(id: ID!): Candidate
 
     deleteCandidate(id: ID!): User
   }
