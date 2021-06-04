@@ -203,6 +203,26 @@ const resolvers = {
       }
     },
 
+    // VOTE FOR CANDIDATE
+    voteCandidate: async (root, { id }) => {
+      try {
+        return await Candidate.findByIdAndUpdate(
+          id,
+          {
+            $inc: { votes: 1 }, // Increment Vote (+1)
+          },
+          {
+            new: true, // Return Updated Document
+            // findByIdAndUpdate needs runValidators: true to apply Mongoose candidateSchema
+            runValidators: true,
+          },
+        );
+      } catch (error) {
+        // Model Validation (unique, length, etc.)
+        throw new Error(error.message);
+      }
+    },
+
     // DELETE CANDIDATE
     deleteCandidate: async (root, { id }, context) => {
       // User Authorization
