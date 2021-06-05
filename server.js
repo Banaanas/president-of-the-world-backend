@@ -52,6 +52,7 @@ const server = new ApolloServer({
       const currentUser = await User.findById(decodedToken.id).populate(
         "candidate",
       );
+
       return { currentUser };
     }
   },

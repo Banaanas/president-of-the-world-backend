@@ -16,9 +16,10 @@ const typeDefs = gql`
     candidate: Candidate
     id: ID!
   }
-
-  type Token {
-    value: String!
+  
+  type LoggedInUser {
+    token: String!
+    user: User!
   }
 
   type Query {
@@ -34,7 +35,7 @@ const typeDefs = gql`
       passwordConfirmation: String!
     ): User
 
-    login(username: String!, password: String!): Token
+    login(username: String!, password: String!): LoggedInUser
 
     addCandidate(
       candidateLastName: String!

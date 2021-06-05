@@ -64,6 +64,7 @@ const resolvers = {
       const passwordHash = await bcrypt.hash(args.password, saltRounds);
 
       const newUser = new User({ username: args.username, passwordHash });
+      console.log(newUser);
 
       // Save into DB
       try {
@@ -84,6 +85,7 @@ const resolvers = {
         throw new UserInputError("Wrong Username");
       }
 
+      console.log("AHAHA");
       // Check Password
       // Return a Promise --> use of Await
       const isPasswordCorrect = await bcrypt.compare(
@@ -107,6 +109,8 @@ const resolvers = {
         process.env.ACCESS_TOKEN_SECRET,
       );
       const loggedInUser = await User.findById(user.id).populate("candidate");
+
+      console.log({ token: generatedToken, user: loggedInUser });
 
       return { token: generatedToken, user: loggedInUser };
     },
