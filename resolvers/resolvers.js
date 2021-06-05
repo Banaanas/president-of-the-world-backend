@@ -110,8 +110,6 @@ const resolvers = {
       );
       const loggedInUser = await User.findById(user.id).populate("candidate");
 
-      console.log({ token: generatedToken, user: loggedInUser });
-
       return { token: generatedToken, user: loggedInUser };
     },
 
