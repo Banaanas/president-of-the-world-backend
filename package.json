@@ -20,6 +20,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "apollo-server": "^2.25.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.0",
@@ -28,7 +29,6 @@
     "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
-    "apollo-server": "^2.25.0",
     "crypto-random-string": "^4.0.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
