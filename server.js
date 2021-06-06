@@ -12,10 +12,10 @@ logger.logInfo("Connecting to", config.MONGODB_URI);
 
 // Connection to DB - Function
 const connectToDB = async () => {
-  const url = config.MONGODB_URI;
+  const databaseURL = config.MONGODB_URI;
 
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(databaseURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
@@ -29,7 +29,7 @@ const connectToDB = async () => {
 connectToDB();
 
 // Debug Mode
-// mongoose.set("debug", true);
+mongoose.set("debug", true);
 
 // Apollo Server
 const server = new ApolloServer({
@@ -61,5 +61,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`Server ready Connecticut at ${url}`);
+  console.log(`Server ready at ${url}`);
 });
