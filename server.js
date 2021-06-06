@@ -56,11 +56,8 @@ const server = new ApolloServer({
       return { currentUser };
     }
   },
-  playground: {
-    settings: {
-      "editor.theme": "light",
-    },
-  },
+  introspection: true,
+  playground: true,
 });
 
 server.listen().then(({ url }) => {
