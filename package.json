@@ -9,6 +9,9 @@
     "start:test": "NODE_ENV=test node --experimental-vm-modules server.js",
     "test": "NODE_ENV=test nodemon server.js"
   },
+  "engines" : {
+    "node" : ">=14.0.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
