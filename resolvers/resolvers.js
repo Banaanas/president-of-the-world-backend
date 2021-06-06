@@ -127,7 +127,7 @@ const resolvers = {
       }
 
       // If User already have 1 candidate, Return Error
-      if (currentUser?.candidate) {
+      if (currentUser.candidate !== undefined) {
         throw new Error("User can not add more than 1 Candidate");
       }
 
