@@ -8,7 +8,7 @@ dotenv.config();
 console.log(dotenv.config());
 
 // Set PORT
-const PORT = 3001;
+const PORT = process.env.PORT;
 
 // SET DATABASE
 let { MONGODB_URI } = process.env;
