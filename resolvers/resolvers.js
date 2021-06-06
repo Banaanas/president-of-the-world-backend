@@ -85,7 +85,6 @@ const resolvers = {
         throw new UserInputError("Wrong Username");
       }
 
-      console.log("AHAHA");
       // Check Password
       // Return a Promise --> use of Await
       const isPasswordCorrect = await bcrypt.compare(
