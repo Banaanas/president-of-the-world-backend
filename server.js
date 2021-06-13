@@ -60,6 +60,6 @@ const server = new ApolloServer({
   playground: true,
 });
 
-server.listen().then(({ url, port }) => {
+server.listen({ port: config.PORT }).then(({ url, port }) => {
   console.log(`Server ready at ${url} on PORT ${port}`);
 });
