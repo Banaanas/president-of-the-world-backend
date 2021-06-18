@@ -64,7 +64,6 @@ const resolvers = {
       const passwordHash = await bcrypt.hash(args.password, saltRounds);
 
       const newUser = new User({ username: args.username, passwordHash });
-      console.log(newUser);
 
       // Save into DB
       try {
