@@ -26,7 +26,7 @@
 <br/>
 <p align="center">
     <a href="https://president-of-the-world.cyrilo.app/">
-        <img src="./public/images/README/president-of-the-world-logo.svg" alt="Project's Logo" width="120" height="120">
+        <img src="./README/president-of-the-world-logo.svg" alt="Project's Logo" width="120" height="120">
     </a>
 </p>
 
@@ -62,7 +62,7 @@ World Presidential Election Application achieved as part of <a href="https://ful
 
 <p align="center">
   <a href="https://president-of-the-world.cyrilo.app/">
-    <img src="./public/images/README/animated-gif-1.gif" alt="Animated Gif" width="380" height="280">
+    <img src="./README/animated-gif-1.gif" alt="Animated Gif" width="380" height="280">
   </a>
 </p>
 
@@ -83,7 +83,7 @@ World Presidential Election Application achieved as part of <a href="https://ful
 
 <p align="center">
   <a href="https://president-of-the-world.cyrilo.app/">
-    <img src="./public/images/README/animated-gif-2.gif" alt="Animated Gif" width="240" height="400">
+    <img src="./README/animated-gif-2.gif" alt="Animated Gif" width="240" height="400">
   </a>
 </p>
 
