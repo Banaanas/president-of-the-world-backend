@@ -1,29 +1,21 @@
 {
   "extends": [
     "airbnb-base",
-    "airbnb-typescript/base",
     "plugin:eslint-comments/recommended",
     "plugin:json/recommended",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "@typescript-eslint",
     "import",
     "prettier"
   ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": 2,
-    // https://github.com/prettier/eslint-plugin-prettier
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": "error",
     "import/extensions": "off"
   }
