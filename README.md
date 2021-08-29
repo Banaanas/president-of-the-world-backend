@@ -30,8 +30,8 @@
     </a>
 </p>
 
-<h1 align="center"> President of the W🌍rld</h1>
-<h3 align="center">MongoDB - GraphQL - React - Node.js - Next.js</h3>
+<h1 align="center">President of the W🌍rld</h1>
+<h3 align="center">TypeScript - MongoDB - GraphQL - React - Node.js - Next.js</h3>
 
 <p align="center">
     Performant, elegant and democratic Full Stack World Presidential Election Application.<br/><br/>
@@ -117,6 +117,7 @@ World Presidential Election Application achieved as part of <a href="https://ful
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Redux](https://redux.js.org/)
 - [stylelint](https://stylelint.io/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Yup](https://github.com/jquense/yup)
 
 <!-- GETTING STARTED -->
