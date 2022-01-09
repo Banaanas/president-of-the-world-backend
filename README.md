@@ -135,12 +135,12 @@ World Presidential Election Application achieved as part of <a href="https://ful
 
 - Front End
 ```sh
-git https://github.com/Banaanas/president-of-the-world-frontend.git
+git clone https://github.com/Banaanas/president-of-the-world-frontend.git
 ```
 
 - Back End
 ```sh
-git https://github.com/Banaanas/president-of-the-world-backend.git
+git clone https://github.com/Banaanas/president-of-the-world-backend.git
 ```
 
 2 - Install NPM Packages / Dependencies
