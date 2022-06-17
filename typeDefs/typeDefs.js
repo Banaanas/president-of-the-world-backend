@@ -16,7 +16,7 @@ const typeDefs = gql`
     candidate: Candidate
     id: ID!
   }
-  
+
   type LoggedInUser {
     token: String!
     user: User!
