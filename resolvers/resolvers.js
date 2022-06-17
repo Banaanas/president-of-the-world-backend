@@ -17,13 +17,15 @@ const resolvers = {
     allCandidatesCount: () => Candidate.collection.countDocuments(),
 
     // ALL CANDIDATES (ALL/NAME)
-    allCandidates: (root, { candidateLastName }) => {
-      if (!candidateLastName) {
-        return Candidate.find({});
-      }
-
+    allCandidates: async (root, { candidateLastName }) => {
+      // Return Candidate if lastName is found
       if (candidateLastName) {
         return Candidate.find({ lastName: candidateLastName });
+      }
+
+      // Return all Candidates
+      if (!candidateLastName) {
+        return Candidate.find({});
       }
     },
   },
