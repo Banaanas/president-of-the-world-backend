@@ -56,6 +56,7 @@ const server = new ApolloServer({
   },
   introspection: true,
   playground: true,
+  persistedQueries: false,
 });
 
 server.listen({ port: config.PORT }).then(({ url, port }) => {
