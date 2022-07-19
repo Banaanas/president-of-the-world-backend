@@ -8,16 +8,6 @@
     "start": "NODE_ENV=production node server.js",
     "test": "NODE_ENV=test nodemon server.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.css": "stylelint --fix",
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "dependencies": {
     "apollo-server": "^3.10.0",
     "bcrypt": "^5.0.1",

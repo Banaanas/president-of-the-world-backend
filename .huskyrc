@@ -1,6 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "npm run test && lint-staged",
-    "pre-push": "npx sort-package-json && npm run test"
-  }
-}
