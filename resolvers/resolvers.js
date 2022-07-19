@@ -258,7 +258,7 @@ const resolvers = {
       return currentUser;
     },
 
-    // TEST MODE - FRONT END TEST - EE
+    // TEST MODE - FRONT END TEST - E2E
     // RESET - DELETE ALL DOCUMENTS IN ALL COLLECTIONS BUT KEEPS COLLECTIONS STRUCTURE
     resetAllDocuments: async () => {
       if (process.env.NODE_ENV !== "test") {
