@@ -1,4 +1,4 @@
-import { UserInputError, AuthenticationError } from "apollo-server";
+import { AuthenticationError, UserInputError } from "apollo-server";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
@@ -256,6 +256,22 @@ const resolvers = {
 
       // Return currentUser
       return currentUser;
+    },
+
+    // TEST MODE - FRONT END TEST - EE
+    // RESET - DELETE ALL DOCUMENTS IN ALL COLLECTIONS BUT KEEPS COLLECTIONS STRUCTURE
+    resetAllDocuments: async () => {
+      if (process.env.NODE_ENV !== "test") {
+        throw new Error("Reset All Documents is only available in TEST Mode");
+      }
+
+      // Delete all Collections
+      try {
+        await Candidate.deleteMany({});
+        await User.deleteMany({});
+      } catch (e) {
+        throw new Error("Test Mode - Reset Collection - Error");
+      }
     },
   },
 };

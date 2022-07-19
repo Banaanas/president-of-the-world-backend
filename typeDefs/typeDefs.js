@@ -53,6 +53,8 @@ const typeDefs = gql`
     voteCandidate(id: ID!): Candidate
 
     deleteCandidate(id: ID!): User
+
+    resetAllDocuments: ID
   }
 `;
 

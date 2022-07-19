@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "start:test": "NODE_ENV=test node --experimental-vm-modules server.js",
     "test": "NODE_ENV=test nodemon server.js"
   },
   "husky": {
@@ -46,20 +45,5 @@
   },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "@comment scripts": {
-    "start:test": [
-      "For Front-End - E2E - Cypress Testing purpose",
-      "Unlike the backend integration tests, Cypress tests do not start the system when they are run",
-      "So the script 'start:test' is equal to the script 'start', except that that NODE_ENV is set to test",
-      "cf. https://fullstackopen.com/en/part5/end_to_end_testing"
-    ],
-    "test": [
-      "Jest Testing purpose - Runs Jest Tests",
-      "'--experimental-vm-modules node_modules/jest/bin/jest.js' is used for Jest to work with ES6 modules (import/export)",
-      "jest.config.js file has been modified as described in the link below.",
-      "cf. https://jestjs.io/docs/en/ecmascript-modules",
-      "To run Jest tests --> 'npm test' or 'npm test -- folder/filename.test.js'"
-    ]
   }
 }
