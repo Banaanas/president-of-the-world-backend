@@ -1,4 +1,8 @@
-import { AuthenticationError, UserInputError } from "apollo-server";
+import {
+  AuthenticationError,
+  ForbiddenError,
+  UserInputError,
+} from "apollo-server";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
@@ -262,7 +266,9 @@ const resolvers = {
     // RESET - DELETE ALL DOCUMENTS IN ALL COLLECTIONS BUT KEEPS COLLECTIONS STRUCTURE
     resetAllDocuments: async () => {
       if (process.env.NODE_ENV !== "test") {
-        throw new Error("Reset All Documents is only available in TEST Mode");
+        throw new ForbiddenError(
+          "Reset All Documents is only available in TEST Mode",
+        );
       }
 
       // Delete all Collections
