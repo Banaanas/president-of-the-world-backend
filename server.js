@@ -59,6 +59,6 @@ const server = new ApolloServer({
   persistedQueries: false,
 });
 
-server.listen({ port: config.PORT }).then(({ url, port }) => {
+server.listen({ port: config.PORT | 3002 }).then(({ url, port }) => {
   console.log(`Server ready at ${url} on PORT ${port}`);
 });
